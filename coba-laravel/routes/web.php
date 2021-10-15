@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,62 +33,17 @@ Route::get('/about', function () {
 
 
 
-Route::get('/post', function () {
-    $blog_post = [
-    [
-        "title" => "Judul Post pertama",
-        "slug" => "judul-post-pertama",
-        "author" =>"Lukman Tresnahadi",
-        "body" => " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam molestiae,
-         maiores ducimus eum voluptas velit minus adipisci, qui exercitationem, tenetur vero pariatur? Ratione, 
-        nihil dolorem excepturi iure commodi accusamus blanditiis."
-    ],
-    
-    [
-      "title" => "Judul Post kedua",
-        "slug" => "judul-post-kedua",
-        "author" =>"Lukman Tresnahadi",
-        "body" => " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam molestiae,
-         maiores ducimus eum voluptas velit minus adipisci, qui exercitationem, tenetur vero pariatur? Ratione, 
-        nihil dolorem excepturi iure commodi accusamus blanditiis."
-    ],
-];
-    return view('post' , [
-        "title" => "post",
-        "post" => $blog_post
-    ]);
-});
+Route::get('/post', [PostController::class,'index'] );
 
-//halaman single post//
+  
+
+
+// halaman single post
 Route::get('post/{slug}', function ($slug) {
-    $blog_post = [
-        [
-            "title" => "Judul Post pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Lukman Tresnahadi",
-            "body" => " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam molestiae,
-         maiores ducimus eum voluptas velit minus adipisci, qui exercitationem, tenetur vero pariatur? Ratione, 
-        nihil dolorem excepturi iure commodi accusamus blanditiis."
-        ],
 
-        [
-            "title" => "Judul Post kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Lukman Tresnahadi",
-            "body" => " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam molestiae,
-         maiores ducimus eum voluptas velit minus adipisci, qui exercitationem, tenetur vero pariatur? Ratione, 
-        nihil dolorem excepturi iure commodi accusamus blanditiis."
-        ],
-    ];
-    $new_posts = [];
-    foreach($blog_post as $posts){
-        if($posts["slug"]=== $slug){
-            $new_post = $posts;
             
-        }
-    }
-    return view('posts',[
-        "title" => "single post",
-        "posts" => $new_posts
+    return view('posts', [
+        "title" => "Single Post",
+        "post" => Post::find($slug)
     ]);
 });
