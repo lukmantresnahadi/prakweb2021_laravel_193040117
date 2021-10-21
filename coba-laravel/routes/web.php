@@ -39,11 +39,7 @@ Route::get('/post', [PostController::class,'index'] );
 
 
 // halaman single post
-Route::get('post/{slug}', function ($slug) {
+Route::get('post/{slug}', [PostController::class,'show']); 
 
             
-    return view('posts', [
-        "title" => "Single Post",
-        "post" => Post::find($slug)
-    ]);
-});
+    
