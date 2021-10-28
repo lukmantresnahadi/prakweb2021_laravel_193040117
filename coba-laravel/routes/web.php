@@ -41,7 +41,7 @@ Route::get('/post', [PostController::class,'index'] );
 
 
 // halaman single post
-Route::get('post/{post}', [PostController::class,'show']);
+Route::get('posts/{post}', [PostController::class,'show']);
 Route::get('/categories/', function () {
     return view('categories', [
         'title' => 'Post Categories',
@@ -51,18 +51,18 @@ Route::get('/categories/', function () {
             
     
 Route::get('/categories/{category:slug}',function(Category $category){
-    return view('category',[
-        'title' =>$category->name,
-        'posts' =>$category->posts,
-        'category' => $category->name
+    return view('post',[
+        'title' =>"Post by category : $category->name",
+        'posts' =>$category,
+        'category' => $category->post->load('category','author')
     ]);
 });
 
 route:: get('/author/{author:username}',function(User $author){
 
         return view('post', [
-            'title' => 'User Posts',
-            'posts' => $author->posts,
+            'title' => "Post by Author : $author->name" ,
+            'posts' => $author->post->load('category','author'),
            
         ]);     
     
