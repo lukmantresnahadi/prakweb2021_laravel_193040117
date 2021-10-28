@@ -11,7 +11,7 @@
       </ul>
       <a href="/categories/{{ $category->slug }}"> {{ $category->name] }}</a>
               </h2>
-              <p>by Lukman tresnahadi in <a href="/categories/"{{ $post->categ
+              <p>by Lukman tresnahadi in <a href="/categories/"{{ $posts->categ
         <h2>
           ory->slug }}></a>
        
