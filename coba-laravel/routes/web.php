@@ -41,10 +41,11 @@ Route::get('/post', [PostController::class,'index'] );
 
 
 // halaman single post
-Route::get('posts/{post}', [PostController::class,'show']);
+Route::get('posts/{post:slug}', [PostController::class,'show']);
 Route::get('/categories/', function () {
     return view('categories', [
         'title' => 'Post Categories',
+        'active' => 'categories',
         'categories' => Category::all()
     ]);
 });
@@ -53,6 +54,7 @@ Route::get('/categories/', function () {
 Route::get('/categories/{category:slug}',function(Category $category){
     return view('post',[
         'title' =>"Post by category : $category->name",
+        'active' => 'categories',
         'posts' =>$category,
         'category' => $category->post->load('category','author')
     ]);
