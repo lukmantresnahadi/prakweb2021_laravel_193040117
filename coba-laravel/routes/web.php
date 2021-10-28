@@ -40,7 +40,15 @@ Route::get('/post', [PostController::class,'index'] );
 
 
 // halaman single post
-Route::get('post/{post}', [PostController::class,'show']); 
+Route::get('post/{post}', [PostController::class,'show']);
+Route::get('/categories/', function () {
+    return view('categories', [
+        'title' => 'Post Categories',
+        'categories' => Category::all()
+    ]);
+});
+            
+    
 Route::get('/categories/{category:slug}',function(Category $category){
     return view('category',[
         'title' =>$category->name,
