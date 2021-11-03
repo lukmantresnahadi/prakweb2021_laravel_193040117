@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row">
     <div class="colom-md-4">
-      <a href="/categories/{{ $category->slug }}">
+      <a href="/post?category={{ $category->slug }}">
       @foreach ($categories as $category)
           
       <div class="card bg-dark text-white">
