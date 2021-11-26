@@ -10,6 +10,13 @@
         <button type="button" class="btn-class" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       @endif
+
+      @if(session)->has('LoginError'))
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('loginError) }}
+        <button type="button" class="btn-class" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
    
           
       @endif
@@ -20,7 +27,7 @@
     @csrf
 
     <div class="form-floating">
-      <input type="email" name ="email"class="form-control  @error('email') @enderror is-invalid" id="email" placeholder="name@example.com" autofocus required>
+      <input type="email" name ="email"class="form-control  @error('email') @enderror is-invalid" id="email" placeholder="name@example.com" autofocus required value="{{ old ('email') }}">
       <label for="floatingInput">Email address</label>
       @error('email')
           <div class="invalid-feeback">
