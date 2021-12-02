@@ -9,7 +9,7 @@
       <h1 class="mb-3"{{ $posts->title }}></h1>
       
 
-      <a href="" class="btn btn-success"><span data-fether="arrow-left" ></span> to all my posts</a>
+      <a href=".dashboard/posts" class="btn btn-success"><span data-fether="arrow-left" ></span> to all my posts</a>
       <a href="" class="btn btn-warning"><span data-fether="edit" ></span>edit</a>
       <a href="" class="btn btn-danger"><span data-fether="x-circle" ></span>delete</a>
       
@@ -20,8 +20,8 @@
   <p>{{ !! $post->body !!}}</p>
 
    </article> 
-<a href="/post" class="d-bloc mt-5">Back to Posts</a>
-@endsection
+
+
     </div>
   </div>
 </div> 
