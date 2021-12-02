@@ -9,9 +9,14 @@
       <h1 class="mb-3"{{ $posts->title }}></h1>
       
 
-      <a href=".dashboard/posts" class="btn btn-success"><span data-fether="arrow-left" ></span> to all my posts</a>
-      <a href="" class="btn btn-warning"><span data-fether="edit" ></span>edit</a>
-      <a href="" class="btn btn-danger"><span data-fether="x-circle" ></span>delete</a>
+      <a href="/dashboard/posts" class="btn btn-success"><span data-fether="arrow-left" ></span> to all my posts</a>
+      <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><span data-fether="edit" ></span>edit</a>
+      <form action="/dashboard/posts{{ $post->slug }}" method="POST" class="d-inline">
+                  @method('delete')
+                  @csrf
+                  <button class="btn btn-danger " onclick="return confirm('are you sure?')">
+                    <span data-feather="x-circle"></span>Delete</button>
+                </form>
       
  <img src="https://source.unsplash.com/500x400?{{ $post[0]->category->name }}" class="card-img-top" 
         alt="{{ $posts->category->name }}" class="img-fluid mt-3">
