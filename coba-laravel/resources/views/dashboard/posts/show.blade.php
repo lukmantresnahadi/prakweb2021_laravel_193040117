@@ -18,8 +18,13 @@
                     <span data-feather="x-circle"></span>Delete</button>
                 </form>
       
- <img src="https://source.unsplash.com/500x400?{{ $post[0]->category->name }}" class="card-img-top" 
-        alt="{{ $posts->category->name }}" class="img-fluid mt-3">
+      @if ($post->image)
+          
+      @else
+          
+      <img src="https://source.unsplash.com/500x400?{{ $post[0]->category->name }}" class="card-img-top" 
+             alt="{{ $posts->category->name }}" class="img-fluid mt-3">
+      @endif
 
         <article class="my-3 fs-5">
   <p>{{ !! $post->body !!}}</p>

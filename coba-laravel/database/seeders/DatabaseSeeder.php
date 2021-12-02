@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Post;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,11 +19,12 @@ class DatabaseSeeder extends Seeder
     {
         
 
-        // User::create([
-        //     'name' => 'Lukman Tresnahadi',
-        //     'email' => 'tresnahadi3@gmail.com',
-        //     'pasword' => bcrypt('12345')
-        // ]);
+        User::create([
+            'name' => 'Lukman Tresnahadi',
+            'username'=>'Lukman ',
+            'email' => 'tresnahadi3@gmail.com',
+            'password' => bcrypt('password')
+        ]);
 
         // User::create([
         //     'name' => 'tresnahadi',
