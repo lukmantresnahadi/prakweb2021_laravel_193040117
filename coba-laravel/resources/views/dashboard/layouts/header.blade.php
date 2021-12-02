@@ -9,8 +9,8 @@
     <div class="nav-item text-nowrap">
       <form action="/logout" method="post">
                 @csrf
-                <button type="submit" class="nav-link px-3 bg-dark border-0"><span data-feather="log-out">
-                </span>Log Out</button>
+                <button type="submit" class="nav-link px-3 bg-dark border-0">Log Out<span data-feather="log-out">
+                </span></button>
               </form>
     </div>
   </div>
